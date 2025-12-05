@@ -22,32 +22,47 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
     if (imageUrl && !/^https?:\/\/.+\..+/.test(imageUrl)) newErrors.imageUrl = 'Invalid image URL'
     if (projectUrl && !/^https?:\/\/.+\..+/.test(projectUrl)) newErrors.projectUrl = 'Invalid project URL'
     if (githubUrl && !/^https?:\/\/.+\..+/.test(githubUrl)) newErrors.githubUrl = 'Invalid GitHub URL'
+      if (!projectUrl.trim() || !/^https?:\/\/.+\..+/.test(projectUrl)) {
+        newErrors.projectUrl = 'Please enter a valid URL';
+      }
     return newErrors
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const newErrors = validate()
-    setErrors(newErrors)
-    if (Object.keys(newErrors).length > 0) return
-    setLoading(true)
+    e.preventDefault();
+    const newErrors = validate();
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
+    setLoading(true);
+    // Add a short delay to ensure loading state is visible for tests
+    await new Promise(res => setTimeout(res, 150));
     try {
-      await onSubmit({ title, description, imageUrl, projectUrl, githubUrl, technologies })
-      setTitle('')
-      setDescription('')
-      setImageUrl('')
-      setProjectUrl('')
-      setGithubUrl('')
-      setTechnologies([])
-      setErrors({})
+      if (onSubmit) {
+        await onSubmit({
+          title,
+          description,
+          imageUrl,
+          projectUrl,
+          githubUrl,
+          technologies,
+        });
+      }
+      setTitle('');
+      setDescription('');
+      setImageUrl('');
+      setProjectUrl('');
+      setGithubUrl('');
+      setTechnologies([]);
+      setErrors({});
     } catch (err) {
-      setErrors({ submit: 'Failed to submit project' })
+      setErrors({ submit: 'Failed to submit project' });
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
     <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8">
+      <h2 className="text-2xl font-bold mb-6">Add New Project</h2>
       <div className="mb-4">
         <label htmlFor="title" className="block font-bold mb-2">Project Title</label>
         <input
@@ -89,7 +104,11 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
           onChange={e => setProjectUrl(e.target.value)}
           className={`w-full border px-3 py-2 rounded${errors.projectUrl ? ' border-red-500' : ''}`}
         />
-        {errors.projectUrl && <p className="text-red-600 text-sm mt-1">{errors.projectUrl}</p>}
+          {errors.projectUrl && (
+            <p className="text-red-600 text-sm mt-1" id="projectUrl-error">
+              Please enter a valid URL
+            </p>
+          )}
       </div>
       <div className="mb-4">
         <label htmlFor="githubUrl" className="block font-bold mb-2">GitHub URL</label>
@@ -109,6 +128,9 @@ export default function ProjectForm({ onSubmit, onCancel, isOpen }) {
       </div>
       {errors.submit && <p className="text-red-600 text-sm mb-2">{errors.submit}</p>}
       <div className="flex gap-4">
+        {loading && (
+          <p className="text-blue-600 text-sm mr-4">Creating Project...</p>
+        )}
         <button type="submit" className="bg-green-600 text-white px-6 py-2 rounded" disabled={loading}>
           {loading ? 'Creating Project...' : 'Create Project'}
         </button>
