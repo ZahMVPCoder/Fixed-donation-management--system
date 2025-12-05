@@ -22,20 +22,17 @@ export default function About() {
             
             {/* Bio */}
             <div className="flex-1">
-              <h2 className="text-3xl font-bold mb-4 text-gray-900">Hi, I'm Zahir! 👋</h2>
+              <h2 className="text-3xl font-bold mb-4 text-gray-900">Hi, I&apos;m Zahir!</h2>
               <div className="space-y-4 text-lg text-gray-700">
                 <p>
-                  I'm a passionate full-stack developer who loves building modern web applications 
-                  that solve real-world problems. I'm currently diving deep into Next.js, React, and 
-                  database design with Prisma and PostgreSQL.
+                  The creator behind the YouTube channel zahtoofunny. I love playing horror games like FNAF, The Backrooms, and anything that brings the excitement and thrill of jump scares!
+                   I love sharing intense gameplay, big reactions, and entertaining moments with my growing community.
                 </p>
                 <p>
-                  What excites me most about coding is the ability to turn ideas into reality and 
-                  create seamless user experiences. I believe in writing clean, maintainable code 
-                  and constantly learning new technologies to stay ahead in this ever-evolving field.
+                  Alongside content creation, I&apos;m also learning web development. I&apos;m exploring web design, React, Next.js, and working with databases as I build my skills and create new projects.
                 </p>
                 <p>
-                  When I'm not coding, you can find me exploring new tech trends, contributing to 
+                  When I&apos;m not coding, you can find me exploring new tech trends, contributing to 
                   open-source projects, or sharing knowledge with the developer community.
                 </p>
               </div>

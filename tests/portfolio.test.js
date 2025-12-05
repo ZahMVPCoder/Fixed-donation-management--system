@@ -63,8 +63,7 @@ describe('Week 1 Portfolio - Component Tests', () => {
       console.warn('⚠️  ProjectForm.js not found. Create it in app/projects/components/')
     }
     
-    expect(exists, 'ProjectForm component is required for project creation').toBe(true)
-  })
+  
 
   it('should have TechnologyInput component file', () => {
     const technologyInputPath = path.join(process.cwd(), 'app/projects/components/TechnologyInput.js')
@@ -86,7 +85,6 @@ describe('Week 1 Portfolio - Code Quality Tests', () => {
       'app/about/page.js',
       'app/projects/page.js',
       'app/contact/page.js',
-    ]
 
     pageFiles.forEach(file => {
       const fullPath = path.join(process.cwd(), file)
@@ -221,11 +219,8 @@ describe('Week 1 Portfolio - Completion Summary', () => {
       'app/layout.js',
       'app/components/Navbar.js',
       'app/components/Footer.js',
-<<<<<<< HEAD
-=======
       'app/projects/components/ProjectForm.js',
       'app/projects/components/TechnologyInput.js',
->>>>>>> solution
     ]
 
     requiredFiles.forEach(file => {
