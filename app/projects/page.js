@@ -6,7 +6,7 @@ import ProjectForm from './components/ProjectForm'
 
 export default function Projects() {
   const [projects, setProjects] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
   const [error, setError] = useState(null)
 
