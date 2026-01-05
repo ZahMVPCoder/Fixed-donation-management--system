@@ -101,7 +101,7 @@ export default function TechnologyInput({ technologies = [], onChange, error }) 
     return () => {
       input.removeEventListener('keypress', handleRawKeyPress);
     };
-  }, [inputValue]);
+  }, [inputValue, addTechnology]);
 
   return (
     <div className="space-y-3">

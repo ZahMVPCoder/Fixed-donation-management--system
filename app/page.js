@@ -91,11 +91,11 @@ export default function Home() {
       
       <div className="max-w-4xl text-center relative z-10">
         <h1 className="text-6xl font-bold mb-6 text-gray-900">
-          Hi, I'm Zahir!
+          Hi, I&apos;m Zahir!
         </h1>
         
         <p className="text-xl text-gray-700 mb-4">
-          I'm a passionate full-stack developer building modern web applications with cutting-edge technologies.
+          I&apos;m a passionate full-stack developer building modern web applications with cutting-edge technologies.
         </p>
         
         <p className="text-lg text-gray-600 mb-8">
